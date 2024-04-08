@@ -2,13 +2,14 @@ import express, { NextFunction, Request, Response } from "express";
 import artigosRouter from "./routes/artigos";
 import perguntasRouter from "./routes/perguntas";
 import respostasRouter from "./routes/respostas";
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware para fazer o parsing do corpo das requisições como JSON
 app.use(express.json());
-
+app.use(cors());
 // Rotas relacionadas aos artigos
 app.use("/artigos", artigosRouter);
 app.use("/perguntas", perguntasRouter);
